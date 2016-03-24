@@ -1,0 +1,11 @@
+$a-tags: 'a, a:hover, a:visited';
+$a-btn: 'a.btn, a.btn:hover, a.btn:visited';
+
+@mixin indents($top,$bottom) {
+    padding-top: $top/2;
+    padding-bottom: $bottom/2;
+    @media screen and (min-width: 992px) {
+        padding-top: $top;
+        padding-bottom: $bottom;
+    }
+}

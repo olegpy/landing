@@ -1,0 +1,176 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>{% block title %}{% endblock title %}</title>
+    <link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Fonts in theme -->
+    <link href="{% static 'css/fonts.css' %}" rel="stylesheet">
+    <!-- Bootstrap-select -->
+    <link href="{% static 'libs/bootstrap-select/css/bootstrap-select.min.css' %}" rel="stylesheet">
+    <!-- Bootstrap-checkbox -->
+    <link href="{% static 'libs/awesome-bootstrap-checkbox-master/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'libs/awesome-bootstrap-checkbox-master/css/build.css' %}" rel="stylesheet">
+    <!-- Style for this template -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{% url  'index' %}">
+                    <img alt="Brand" src="{% static 'img/logo.png' %}" />
+                </a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div id="navbar" class="navbar-right nav-block navbar-collapse collapse">
+                <button type="button" class="btn btn-danger inline-block request bg-transparent navbar-right desktop-ver" data-toggle="modal" data-target="#myModal">Request Quote</button>
+                <form class="navbar-form inline-block navbar-right" role="search">
+                    <div class="form-group">
+                        <input type="text" name="q" class="form-control search_input" placeholder="Search">
+                        <button class="btn btn-default search_btn">
+                            <span></span>
+                        </button>
+                    </div>
+                </form>
+                <ul class="nav navbar-nav inline-block">
+                    <li class="active"><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#case-studies">Case Studies</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button type="button" class="btn btn-danger inline-block request bg-transparent navbar-right mobile-ver" data-toggle="modal" data-target="#myModal">Request Quote</button>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+        {% block content %}{% endblock %}
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <a href="{% url  'index' %}"><span class="footer-logo"></span></a>
+                    <p>© 2016 Redwerk.  All rights reserved.</p>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <ul>
+                                <li><a href="#about">About</a></li>
+                                <li><a href="#services">Services</a></li>
+                                <li><a href="#case-studies">Case Studies</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <ul>
+                                <li><a href="#testimonials">Testimonials</a></li>
+                                <li><a href="#blog">Blog</a></li>
+                                <li><a href="#contact">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 col-sm-12 news-letter">
+                    <h5>Join Our newsletter</h5>
+                    <p>Join up and get notified about new products, updates and special offers.</p>
+                    <form class="theme-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Enter your email">
+                        </div>
+                        <button type="submit" class="btn btn-default"><img src="{% static 'img/arrow.png' %}" alt="arrow" /></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><img src="{% static 'img/close-modal.png' %}" alt="close-modal"></button>
+                    <h3>REQUEST QUOTE</h3>
+                </div>
+                <div class="modal-body contact-us">
+                    <form class="contact-form theme-form" method="POST" action="contact_me.php">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control email" id="exampleInputEmail2" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label>Budget</label>
+                            <select class="form-control selectpicker">
+                                <option>$500 - $1000 </option>
+                                <option>$1000 - $1500 </option>
+                                <option>$1500 - $2000 </option>
+                            </select>
+                        </div>
+                        <div class="form-group textarea-form">
+                            <label for="exampleInputEmail1">Message</label>
+                            <textarea class="form-control">Hello, Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</textarea>
+                        </div>
+                        <div class="privacy">
+                            <p><img src="{% static 'img/privacy.png' %}" alt="privacy">Your privacy is protected</p>
+                        </div>
+                        <div class="block-checkbox">
+                            <div class="checkbox checkbox-danger">
+                                <input id="checkbox2" type="checkbox" class="styled">
+                                <label for="checkbox2">
+                                    I agree to the terms of use and privacy policy.
+                                </label>
+                            </div>
+                            <div class="checkbox checkbox-danger">
+                                <input id="checkbox5" type="checkbox" class="styled" checked>
+                                <label for="checkbox5">
+                                    I want that you callback me as soon as possible
+                                </label>
+                            </div>
+                        </div>
+                        <div class="block-radio">
+                            <p>Want to subscribe our news?</p>
+                            <div class="radio radio-danger radio-inline">
+                                <input type="radio" id="inlineRadio3" value="option1" name="radioInline" checked>
+                                <label for="inlineRadio3"> Yes </label>
+                            </div>
+                            <div class="radio radio-danger radio-inline">
+                                <input type="radio" id="inlineRadio2" value="option2" name="radioInline">
+                                <label for="inlineRadio2"> No </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-danger submit">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Jquery plugin -->
+    <script src="{% static 'js/jquery-1.12.1.min.js' %}"></script>
+    <!-- Bootstrap plugin -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- Bootstrap select -->
+    <script src="{% static 'libs/bootstrap-select/js/bootstrap-select.min.js' %}"></script>
+    <!-- theme js -->
+    <script src="{% static 'js/theme.js' %}"></script>
+</body>
+
+</html>
